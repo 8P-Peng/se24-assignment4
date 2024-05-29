@@ -15,13 +15,14 @@ Feature: InsertIntoListAcceptanceTests
       | 0.4 |
 
 
-  Scenario:  Insert multiple elements by value into a sorted list
+  Scenario:  Insert multiple elements with value into a sorted list at the same time
     Given I have elements with the following values in my list:
       | 0.1 |
       | 0.2 |
       | 0.4 |
-    When I insert an element with value 0.3
-    And I insert an element with value 0.15
+    When I insert multiple elements with value:
+      | 0.3  |
+      | 0.15 |
     Then the list should contain the elements in the following order:
       | 0.1  |
       | 0.15 |

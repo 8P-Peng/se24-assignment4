@@ -62,6 +62,12 @@ public class CucumberDoublyLinkedListSteps {
         list.insert(value);
     }
 
+    @When("^I insert multiple elements with value:$")
+    public void iInsertMultipleElementsWithValue(List<Double> values)
+    {
+        values.forEach(list::insert);
+    }
+
     // Then -----------------------------------------------------------------------
 
     @Then("^the list should contain that element$")
