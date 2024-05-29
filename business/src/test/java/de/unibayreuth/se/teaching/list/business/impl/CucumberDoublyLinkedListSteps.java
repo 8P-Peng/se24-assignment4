@@ -17,7 +17,6 @@ public class CucumberDoublyLinkedListSteps {
     private static final Logger logger = LoggerFactory.getLogger(CucumberDoublyLinkedListSteps.class);
 
     private DoublyLinkedList list;
-    private DoublyLinkedList listTarget;
     private double value;
     private double[] arrayFromValues;
     private double[] arrayFromList;
@@ -26,7 +25,6 @@ public class CucumberDoublyLinkedListSteps {
     public void initialization()
     {
         list = new DoublyLinkedList();
-        listTarget = new DoublyLinkedList();
     }
 
     // Given -----------------------------------------------------------------------
@@ -81,6 +79,7 @@ public class CucumberDoublyLinkedListSteps {
 
     @Then("^the list should contain the elements in the following order:$")
     public void theListShouldContainTheElementsInTheFollowingOrder(List<Double> values) {
+        DoublyLinkedList listTarget = new DoublyLinkedList();
         values.forEach(listTarget::append);
         arrayFromValues = values.stream().mapToDouble(Double::doubleValue).toArray();
         Assertions.assertArrayEquals(arrayFromValues, list.asArray());
