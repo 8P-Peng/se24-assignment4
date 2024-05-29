@@ -17,13 +17,16 @@ public class CucumberDoublyLinkedListSteps {
     private static final Logger logger = LoggerFactory.getLogger(CucumberDoublyLinkedListSteps.class);
 
     private DoublyLinkedList list;
+    private DoublyLinkedList listTarget;
     private double value;
     private double[] arrayFromValues;
     private double[] arrayFromList;
 
     @Before
-    public void initialization() {
+    public void initialization()
+    {
         list = new DoublyLinkedList();
+        listTarget = new DoublyLinkedList();
     }
 
     // Given -----------------------------------------------------------------------
@@ -57,6 +60,13 @@ public class CucumberDoublyLinkedListSteps {
         logger.info("%s not implemented yet.".formatted(Thread.currentThread().getStackTrace()[1].getMethodName()));
     }
 
+    @When("^I insert an element with value (\\d+.\\d+)$")
+    public void iInsertAnElementWithValue(double value)
+    {
+        this.value = value;
+        list.insert(value);
+    }
+
     // Then -----------------------------------------------------------------------
 
     @Then("^the list should contain that element$")
@@ -71,7 +81,9 @@ public class CucumberDoublyLinkedListSteps {
 
     @Then("^the list should contain the elements in the following order:$")
     public void theListShouldContainTheElementsInTheFollowingOrder(List<Double> values) {
-        logger.info("%s not implemented yet.".formatted(Thread.currentThread().getStackTrace()[1].getMethodName()));
+        values.forEach(listTarget::append);
+        arrayFromValues = values.stream().mapToDouble(Double::doubleValue).toArray();
+        Assertions.assertArrayEquals(arrayFromValues, list.asArray());
     }
 
     @Then("the list should contain {int} element(s)")
