@@ -22,10 +22,7 @@ public class CucumberDoublyLinkedListSteps {
     private double[] arrayFromList;
 
     @Before
-    public void initialization()
-    {
-        list = new DoublyLinkedList();
-    }
+    public void initialization()  { list = new DoublyLinkedList(); }
 
     // Given -----------------------------------------------------------------------
 
