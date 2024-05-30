@@ -5,8 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.junit.jupiter.api.Assertions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -14,7 +12,6 @@ import java.util.List;
  * Step definitions for the Cucumber tests of the doubly-linked list.
  */
 public class CucumberDoublyLinkedListSteps {
-    private static final Logger logger = LoggerFactory.getLogger(CucumberDoublyLinkedListSteps.class);
 
     private DoublyLinkedList list;
     private double value;
@@ -50,10 +47,6 @@ public class CucumberDoublyLinkedListSteps {
         arrayFromList = list.asArray();
     }
 
-    @When("^I invert the list$")
-    public void iInvertTheList() {
-        logger.info("%s not implemented yet.".formatted(Thread.currentThread().getStackTrace()[1].getMethodName()));
-    }
 
     @When("^I insert an element with value (\\d+.\\d+)$")
     public void iInsertAnElementWithValue(double value)
